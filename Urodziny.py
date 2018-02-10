@@ -1,10 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import datetime
 app = Flask(__name__)
 
 @app.route('/')
-def main():
-    return render_template('html/index.html')
+def hello(name=None):
+    return render_template('index.html', name=name)
 
 slownik = {"Justyna": datetime.date(year=1987, month=6, day=17),
            "Filip": datetime.date(year=1987, month=3, day=26),
@@ -26,8 +26,9 @@ def imie_w_bazie(name):
 
     return ile_jeszcze(name)
 
-@app.route('/name/<name>')
-def ile_jeszcze(name):
+@app.route('/pytanie')
+def ile_jeszcze():
+    name = request.args.get('nazwa', '')
     today = datetime.date.today()
     bd = slownik[name]
     rok = today.year
@@ -35,7 +36,8 @@ def ile_jeszcze(name):
     if today > bd:
         bd = bd.replace(year=rok+1)
     ile = bd - today
-    return "Do Twoich urodzin zostało już tylko {} dni!!!".format(ile.days)
+    days = ile.days
+    return render_template('urodziny.html', days = days)
 
 if __name__ == "__main__":
     app.run()
