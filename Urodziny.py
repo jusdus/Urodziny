@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 import datetime
 app = Flask(__name__)
 
 @app.route('/')
-def jestem():
-    return "nie wiem o co tu chodzi!!!"
+def main():
+    return render_template('html/index.html')
 
 slownik = {"Justyna": datetime.date(year=1987, month=6, day=17),
            "Filip": datetime.date(year=1987, month=3, day=26),
