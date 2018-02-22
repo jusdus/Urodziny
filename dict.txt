@@ -1,0 +1,26 @@
+Justyna:1987-06-17
+Filip:1987-03-26
+Stasio:2012-05-24
+Niunia:2016-02-25
+Misiek:2012-06-06
+Misiek:2012-06-06
+
+
+
+def save_in_file(slownik):
+    with open('dict.txt', 'a') as file:
+        for name in slownik:
+            date = str(slownik[name])
+            linia = ":".join([name, date])
+            print(linia, file=file)
+    file.close()
+
+def open_file(file):
+    with open('dict.txt', 'r') as file:
+        for line in file:
+            t = line.split(":")
+            name = t[0]
+            date = t[1].replace("\n", "")
+            date = date.split("-")
+            slownik[name] = datetime.date(year = int(date[0]), month = int(date[1]), day = int(date[2]))
+    return slownik
