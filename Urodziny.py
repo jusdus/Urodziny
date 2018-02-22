@@ -81,6 +81,14 @@ def ile_mam_lat(name):
     rok_ur = bd.year
     return rok-rok_ur+juz_bylo(bd)
 
+def ile_mam_lat_form():
+    name = request.args.get('nazwa', '')
+    names = imiona()
+    if name not in names:
+        pass
+    else:
+        pass
+
 
 if __name__ == "__main__":
     app.run()
