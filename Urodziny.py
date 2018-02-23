@@ -99,7 +99,7 @@ def ile_mam_lat_form():
         wiek = ile_mam_lat(name)
         if wiek == 1:
             x = "rok"
-        elif str(wiek)[-1::] == "2" or str(wiek)[-1::] == "3" or str(wiek)[-1::] == "4":
+        elif "2" <= str(wiek)[-1] <= "4":
             x = "lata"
         else:
             x = "lat"
