@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
- 
+<html lang="pl-PL">
+
 <head>
     <title>Urodziny</title>
- 
- 
+
+
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
- 
+
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
- 
- 
+
+
 </head>
- 
+
 <body>
- 
+
     <div class="container">
         <div class="header">
             <nav>
@@ -24,25 +24,29 @@
             </nav>
             <h3 class="text-muted">Urodziny</h3>
         </div>
- 
+
         <div class="jumbotron">
-            <h1>Ile jeszcze...</h1>
             <p class="lead"></p>
-            <p>Chcesz się dowiedzieć? Wpisz swoje imię!
+            <p>Wpisz swoje imię:
             </p>
 			<form action="pytanie">
 			<input type="text" name="nazwa" />
+			<p></p>
+			<p>Czego chcesz się dowiedzieć?
+            </p>
 
+	        <input type="radio" name="option" value="o1"> Ile ma lat?
+	        <p><input type="radio" name="option" value="o2" /> Ile dni zostało do urodzin?</p>
 
 			<input type="submit" value="OK" />
 			</form>
         </div>
- 
+
         <footer class="footer">
             <p>&copy; Jus 2018 </p>
         </footer>
- 
+
     </div>
 </body>
- 
+
 </html>
