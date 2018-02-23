@@ -97,7 +97,13 @@ def ile_mam_lat_form():
         return baza_print()
     else:
         wiek = ile_mam_lat(name)
-        return render_template('ile_lat.html', name=name, years=wiek)
+        if wiek == 1:
+            x = "rok"
+        elif str(wiek)[-1::] == "2" or str(wiek)[-1::] == "3" or str(wiek)[-1::] == "4":
+            x = "lata"
+        else:
+            x = "lat"
+        return render_template('ile_lat.html', name=name, years=wiek, x=x)
 
 
 if __name__ == "__main__":
