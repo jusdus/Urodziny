@@ -48,6 +48,22 @@ def baza():
     return redirect(url_for("hello"))
 
 
+def dzien_tyg(data):
+    if (data.isoweekday()) == 1:
+        return "Poniedziałek"
+    if (data.isoweekday()) == 2:
+        return "Wtorek"
+    if (data.isoweekday()) == 3:
+        return "Środa"
+    if (data.isoweekday()) == 4:
+        return "Czwartek"
+    if (data.isoweekday()) == 5:
+        return "Piątek"
+    if (data.isoweekday()) == 6:
+        return "Sobota"
+    if (data.isoweekday()) == 7:
+        return "Niedziela"
+
 @app.route('/pytanie')
 def ile_jeszcze():
     name = request.args.get('nazwa', '')
@@ -64,7 +80,7 @@ def ile_jeszcze():
             bd = bd.replace(year=rok + 1)
         ile = bd - today
         days = ile.days
-        return render_template('urodziny.html', days=days)
+        return render_template('urodziny.html', days=days, day=dzien_tyg(bd))
     else:
         return redirect(url_for("ile_mam_lat_form", nazwa=name)) #'/ile_lat?nazwa=' + name)
 
@@ -104,6 +120,11 @@ def ile_mam_lat_form():
         else:
             x = "lat"
         return render_template('ile_lat.html', name=name, years=wiek, x=x)
+
+
+
+
+
 
 
 if __name__ == "__main__":
