@@ -9,10 +9,12 @@
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
+    <link href="static/stylejustyny.css" rel="stylesheet">
 
+<script type="text/javascript" src="static/brython.js"></script>
 </head>
 
-<body>
+<body onload="brython(10)">
 
     <div class="container">
         <div class="header">
@@ -24,6 +26,10 @@
             </nav>
             <h3 class="text-muted">Urodziny</h3>
         </div>
+        <script type="text/python">
+if __name__=='__main__':
+    print('hello !')
+</script>
 
         <div class="jumbotron">
             <p class="lead"></p>
@@ -38,8 +44,23 @@
 	        <input type="radio" name="option" value="o1"> Ile ma lat?
 	        <p><input type="radio" name="option" value="o2" /> Ile dni zostało do urodzin?</p>
 
-			<input type="submit" value="OK" />
+			<input type="submit" class="myButton" value="OK" />
 			</form>
+
+            <br /> <br />
+            <button id="button0" class="myButton">Pobierz obecny czas</button>
+            <span id="zone0" class="zone"></span>
+            <script type="text/python">
+        from browser import document, window
+
+        @document['button0'].bind('click')
+        def show_date(event):
+            date = window.Date.new()
+            document['zone0'].text = '{}-{:02}-{:02}'.format(
+                date.getFullYear(), date.getMonth()+1, date.getDate())
+
+
+            </script>
         </div>
 
         <footer class="footer">
@@ -47,6 +68,7 @@
         </footer>
 
     </div>
+
 </body>
 
 </html>

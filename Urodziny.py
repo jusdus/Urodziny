@@ -71,8 +71,8 @@ def ile_jeszcze():
     names = imiona()
     if name not in names:
         return render_template('baza.html', name=name)
-    opcja = request.args.get('option', '')
-    if opcja == "o2":
+    option = request.args.get('option', '')
+    if option == "o2":
         bd = names[name]
         rok = today.year
         bd = bd.replace(year=rok)
@@ -120,10 +120,6 @@ def ile_mam_lat_form():
         else:
             x = "lat"
         return render_template('ile_lat.html', name=name, years=wiek, x=x)
-
-
-
-
 
 
 
