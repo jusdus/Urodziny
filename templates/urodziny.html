@@ -8,36 +8,12 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-
-<script type="text/javascript" src="/static/brython.js"></script>
-
-    <script type="text/python">
-import turtle
-
-t1=turtle.Turtle()
-t1.penup()
-
-t1.pendown()
-t1.width(3)
-for c in ['red', 'blue', 'yellow', 'green', 'purple', 'brown']:
-    t1.color(c)
-    t1.forward(50)
-    t1.left(60)
-
-t1.penup()
-t1.left(60)
-t1.backward(120)
-
-t1.pendown()
-t1.color('red')
-t1.write("Sto lat!!!", font=("Arial", 30, "normal"))
-
-turtle.show()
-</script>
+    <script type="text/javascript" src="static/brython.js"></script>
+    <script type="text/javascript" src="static/brython_stdlib.js"></script>
 
 </head>
 
-<body onload="brython(1)">
+<body onload="brython(10)">
 
     <div class="container">
         <div class="header">
@@ -55,6 +31,26 @@ turtle.show()
             <h1> {{ days }} dni!!!</h1>
             <h1> {{ day }} - będzie się działo </h1>
 			<img src="static/balon.jpg" alt="Jestes balon!" />
+            <br /><br />
+            <button id="button0" class="myButton">Wylosuj ciasteczko</button>
+
+            <script type="text/python" id="script0">
+            from browser import document, alert
+            import random
+
+            def chinskie():
+                with open('static/cytaty.txt', 'rU') as f:
+                    count = len(f.readlines())
+                los = random.randint(0, (count - 1))
+
+                with open('static/cytaty.txt', 'rU') as f:
+                    return f.readlines()[los]
+
+            @document["button0"].bind("click")
+            def hello(ev):
+                alert(chinskie())
+            </script>
+
         </div>
  
         <footer class="footer">
