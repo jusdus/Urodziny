@@ -1,7 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 import datetime
 
-from flask.ext.zodb import ZODB, Object, List
+from flask_zodb import ZODB, Object, List
+
+import sys
+path = '/home/justde/mysite'
+if path not in sys.path:
+   sys.path.insert(0, path)
+
 
 
 class User(Object):

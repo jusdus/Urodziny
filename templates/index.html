@@ -11,46 +11,47 @@
 
     <link href="static/stylejustyny.css" rel="stylesheet">
 
-<script type="text/javascript" src="static/brython.js"></script>
+    <script type="text/javascript" src="static/brython.js"></script>
 </head>
 
 <body onload="brython(10)">
 
-    <div class="container">
-        <div class="header">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a>
-                    </li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Urodziny</h3>
-        </div>
-        <script type="text/python">
+<div class="container">
+    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Urodziny</h3>
+    </div>
+    <script type="text/python">
 if __name__=='__main__':
     print('hello !')
-</script>
 
-        <div class="jumbotron">
-            <p class="lead"></p>
-            <p>Wpisz swoje imię:
+    </script>
+
+    <div class="jumbotron">
+        <p class="lead"></p>
+        <p>Wpisz swoje imię:
+        </p>
+        <form action="pytanie">
+            <input type="text" name="nazwa"/>
+            <p></p>
+            <p>Czego chcesz się dowiedzieć?
             </p>
-			<form action="pytanie">
-			<input type="text" name="nazwa" />
-			<p></p>
-			<p>Czego chcesz się dowiedzieć?
-            </p>
 
-	        <input type="radio" name="option" value="o1"> Ile ma lat?
-	        <p><input type="radio" name="option" value="o2" /> Ile dni zostało do urodzin?</p>
+            <input type="radio" name="option" value="o1"> Ile ma lat?
+            <p><input type="radio" name="option" value="o2"/> Ile dni zostało do urodzin?</p>
 
-			<input type="submit" class="myButton" value="OK" />
-			</form>
+            <input type="submit" class="myButton" value="OK"/>
+        </form>
 
-            <br /> <br />
-            <button id="button0" class="myButton">Pobierz obecny czas</button>
-            <span id="zone0" class="zone"></span>
-            <script type="text/python">
+        <br/> <br/>
+        <button id="button0" class="myButton">Pobierz bieżącą datę</button>
+        <span id="zone0" class="zone"></span>
+        <script type="text/python">
         from browser import document, window
 
         @document['button0'].bind('click')
@@ -60,14 +61,15 @@ if __name__=='__main__':
                 date.getFullYear(), date.getMonth()+1, date.getDate())
 
 
-            </script>
-        </div>
 
-        <footer class="footer">
-            <p>&copy; Jus 2018 </p>
-        </footer>
-
+        </script>
     </div>
+
+    <footer class="footer">
+        <p>&copy; Jus 2018 </p>
+    </footer>
+
+</div>
 
 </body>
 
