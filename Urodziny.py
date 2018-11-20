@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import datetime
 
-from flask_zodb import ZODB, Object, List
+from flask.ext.zodb import ZODB, Object, List
 
 import sys
 path = '/home/justde/mysite'
