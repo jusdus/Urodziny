@@ -1,30 +1,22 @@
-from flask import Flask, render_template, request, redirect, url_for
+import shelve
 import datetime
+import os.path as path
 
-from flask.ext.zodb import ZODB, Object, List
+from flask import Flask, render_template, request, redirect, url_for
+from contextlib import closing
 
-import sys
-path = '/home/justde/mysite'
-if path not in sys.path:
-   sys.path.insert(0, path)
-
-
-
-class User(Object):
-    def __init__(self, name, password):
-        self.name = name
-        self.password = password
-        self.shoutouts = List()
-
+SHELVE_DB = 'urodziny.db'
 
 app = Flask(__name__)
-app.config['ZODB_STORAGE'] = 'file://app.fs'
-db = ZODB(app)
+app.config.from_object(__name__)
+
+db = shelve.open(path.join(app.root_path, app.config['SHELVE_DB']), writeback=True)
 
 slownik = {"Justyna": datetime.date(year=1987, month=6, day=17),
            "Filip": datetime.date(year=1987, month=3, day=26),
            "Stasio": datetime.date(year=2012, month=5, day=24),
            "Niunia": datetime.date(year=2016, month=2, day=25)}
+
 
 def imiona():
     if 'imiona' not in db:
@@ -70,6 +62,7 @@ def dzien_tyg(data):
     if (data.isoweekday()) == 7:
         return "Niedziela"
 
+
 @app.route('/pytanie')
 def ile_jeszcze():
     name = request.args.get('nazwa', '')
@@ -88,7 +81,7 @@ def ile_jeszcze():
         days = ile.days
         return render_template('urodziny.html', days=days, day=dzien_tyg(bd))
     else:
-        return redirect(url_for("ile_mam_lat_form", nazwa=name)) #'/ile_lat?nazwa=' + name)
+        return redirect(url_for("ile_mam_lat_form", nazwa=name))  # '/ile_lat?nazwa=' + name)
 
 
 def juz_bylo(data):
@@ -128,6 +121,6 @@ def ile_mam_lat_form():
         return render_template('ile_lat.html', name=name, years=wiek, x=x)
 
 
-
 if __name__ == "__main__":
-    app.run()
+    with closing(db):
+        app.run()
