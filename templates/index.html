@@ -17,13 +17,17 @@
 
 <body onload="brython(10)">
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
 <div class="container">
     <div class="header">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="#">Home</a>
+                <li role="presentation" class="active"><a href="/">Home</a>
                 </li>
             </ul>
         </nav>
@@ -44,7 +48,7 @@ if __name__=='__main__':
             <p></p>
             <p>Czego chcesz się dowiedzieć?
             </p>
-            <p><input type="radio" name="option" value="o1"> Ile ma lat?</p>
+            <p><input type="radio" name="option" value="o1" checked="checked"> Ile ma lat?</p>
 
             <p><input type="radio" name="option" value="o2"/> Ile dni zostało do urodzin?</p>
 
