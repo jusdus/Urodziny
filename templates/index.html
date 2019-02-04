@@ -4,8 +4,9 @@
 <head>
     <title>Urodziny</title>
 
+    <meta charset="utf-8">
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
@@ -15,6 +16,8 @@
 </head>
 
 <body onload="brython(10)">
+
+
 
 <div class="container">
     <div class="header">
@@ -41,8 +44,8 @@ if __name__=='__main__':
             <p></p>
             <p>Czego chcesz się dowiedzieć?
             </p>
+            <p><input type="radio" name="option" value="o1"> Ile ma lat?</p>
 
-            <input type="radio" name="option" value="o1"> Ile ma lat?
             <p><input type="radio" name="option" value="o2"/> Ile dni zostało do urodzin?</p>
 
             <input type="submit" class="myButton" value="OK"/>
